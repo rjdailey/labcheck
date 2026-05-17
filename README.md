@@ -1,12 +1,12 @@
 # labcheck
 
-A CLI tool for checking the health of your self-hosted homelab over SSH.
+A CLI tool for checking your self-hosted homelab health over SSH.
 
-## Features
+## Commands
 
-- Docker container status
-- Disk usage (mergerFS)
-- SnapRAID sync status
+- `labcheck init` — configure your homelab connection
+- `labcheck ping` — test SSH connectivity
+- `labcheck status` — interactive container status table
 
 ## Installation
 
@@ -17,16 +17,29 @@ go install github.com/rjdailey/labcheck@latest
 ## Usage
 
 ```bash
-labcheck init        # configure your homelab connection
-labcheck run         # run all health checks
+labcheck init     # first time setup
+labcheck status   # view container status
 ```
+
+### status keybindings
+
+| Key   | Action         |
+| ----- | -------------- |
+| `↑/↓` | navigate       |
+| `n`   | sort by name   |
+| `s`   | sort by stack  |
+| `h`   | sort by health |
+| `u`   | sort by uptime |
+| `q`   | quit           |
 
 ## Configuration
 
-Config is stored at `~/.labcheck/config.yaml`.
+Stored at `~/.labcheck/config.yaml`.
 
-## Planned Improvements
+## Roadmap
 
-- [ ] Tab completion for file paths in `labcheck init` (huh)
-- [ ] Interactive TUI dashboard (Bubbletea)
-- [ ] Multi-host support
+- [x] SSH connectivity check
+- [x] Interactive container status TUI
+- [ ] Disk usage
+- [ ] SnapRAID sync status
+- [ ] UniFi network stats
